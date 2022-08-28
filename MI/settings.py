@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
+#import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,9 +27,9 @@ SECRET_KEY = 'django-insecure-933e&&!go2*orwj1updfvjq%5#7pc*fse7g_-83o(581!n+c*c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['mi-streaming.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = []
 
-
+#'mi-streaming.herokuapp.com', 'localhost', '127.0.0.1'
 # Application definition
 
 INSTALLED_APPS = [
@@ -152,4 +152,4 @@ LOGIN_REDIRECT_URL = 'MIAPP:HOME'
 ACCOUNT_LOGOUT_ON_GET = True
 
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
