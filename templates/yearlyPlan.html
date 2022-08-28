@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <title>MI-Yearly Plan</title>
+    <style>
+    body{
+        background-color: #1f4d91;
+        height: 100%;
+    }
+    .card{
+        width: 60%;
+    }
+    @media screen and (max-width: 1400px){
+        .card{
+            width: 80%;
+        }
+    }
+    @media screen and (max-width: 1050px){
+        .card{
+            width: 100%;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="my-5 py-4 rounded-5 px-5 card mx-auto bg-white">
+            <h2 style="text-align: center;">Choose the right plan for you</h2>
+            <div class="align-items-center my-3" style="display: inline-block;">
+                <div class="row rounded-pill h-100" style="background-color: #1f4d91;">
+                    <button class="btn col-6 rounded-pill" style="color: white; border-color: #1f4d91;" onclick="window.location.href='{% url 'MIAPP:Subscribe'%}'">Monthly</button>
+                    <button class="btn bg-white col-6 rounded-pill " style="border-color:#1f4d91; border-width: 5px;">Yearly</button>
+                </div>
+            </div>
+            <div class="row">
+                <form action="{% url 'MIAPP:confirmYearly' %}" method="POST" id="yearlyPlan">
+                    {% csrf_token %}
+                    <div class="col-4" style="display: inline-block;">
+                    </div>
+                    <div class="col-7 mx-4" style="display: inline-block;">
+                        <div class="row">
+                            {% for p in plans %}
+                            <div class="col-3" style="display: inline-block;">
+                                <div class="h-100" style="background-color: #1f4d91;">
+                                    <button class="btn h-100 w-100" name="yearly" value="{{p.Plan_Name}}" form="yearlyPlan" style="color: white;" type="submit">{{p.Plan_Name}}</button>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </form>
+            </div>
+                
+            
+
+            <div class="row border-bottom my-2">
+                
+                <div class="col-4">
+                    <div>
+                        <p>Yearly price</p>
+                    </div>
+                </div>
+                {% for p in plans %}
+                <div class="col-2">
+                    <div class="h-100" style="text-align: center;">
+                        <p>&#8377;{{p.Yearly_Price}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                
+                
+            </div>
+
+
+
+            <div class="row border-bottom my-2">
+                <div class="col-4">
+                    <div>
+                        <p>Video Quality</p>
+                    </div>
+                </div>
+                {% for p in plans %}
+                <div class="col-2">
+                    <div class="h-100" style="text-align: center;">
+                        <p>{{p.Video_Quality}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+
+
+
+            <div class="row border-bottom my-2">
+                <div class="col-4">
+                    <div>
+                        <p>Resolution</p>
+                    </div>
+                </div>
+                {% for p in plans %}
+                <div class="col-2">
+                    <div class="h-100" style="text-align: center;">
+                        <p>{{p.Resolution}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+
+
+
+            <div class="row my-2">
+                <div class="col-4">
+                    <div>
+                        <p>Devices you can use to watch</p>
+                    </div>
+                </div>
+                {% for p in plans %}
+                <div class="col-2">
+                    <div class="h-100" style="text-align: center;">
+                        <p>{% if p.Devices  %} {{p.Devices.0}}{% endif %}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+
+
+
+            <div class="row my-2">
+                <div class="col-4">
+                    <div>
+                        <p></p>
+                    </div>
+                </div>
+                {% for p in plans %}
+                <div class="col-2">
+                    <div class="h-100" style="text-align: center;">
+                        <p>
+                        {% if p.Devices|length > 1  %}
+                            {{p.Devices.1}}
+                        {% endif %}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+
+
+            <div class="row my-2">
+                <div class="col-4">
+                    <div>
+                        <p></p>
+                    </div>
+                </div>
+                {% for p in plans %}
+                <div class="col-2">
+                    <div class="h-100" style="text-align: center;">
+                        <p>
+                        {% if p.Devices|length > 2  %}
+                            {{p.Devices.2}}
+                        {% endif %}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+
+
+            <div class="row my-2">
+                <div class="col-4">
+                    <div>
+                        <p></p>
+                    </div>
+                </div>
+                {% for p in plans %}
+                <div class="col-2">
+                    <div class="h-100" style="text-align: center;">
+                        <p>
+                        {% if p.Devices|length > 3  %}
+                            {{p.Devices.3}}
+                        {% endif %}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+
+            
+
+
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
