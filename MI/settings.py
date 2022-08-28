@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-933e&&!go2*orwj1updfvjq%5#7pc*fse7g_-83o(581!n+c*c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mi-streaming.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
