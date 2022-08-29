@@ -43,7 +43,7 @@
                 <input type="email" name="login" id="id_login" class="w-100" required>
                 <label style="margin-top: 20px;">Password</label><br>
                 <input type="password" name="password" id="id_password" class="w-100" required>
-                <input style="margin-top: 20px;" type="checkbox" id="rememberMe" name="rememberMe" value="true">&nbsp;<label>Remember Me</label><br>
+                
                 {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_name }}" />
                 {% endif %}
