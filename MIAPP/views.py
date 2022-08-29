@@ -1,8 +1,10 @@
 
-
+#from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views import View
 from .models import Subscriptions
+#from django.conf import settings
+#from django.shortcuts import redirect
 
 
 class HOME(View):

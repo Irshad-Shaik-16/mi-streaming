@@ -43,12 +43,12 @@
                 <div class="row">
                     <form action="{% url 'MIAPP:confirm' %}" method="POST" id="monthlyPlan">
                         {% csrf_token %}
-                        <div class="col-4" style="display: inline-block;">
+                        <div class="col-4 d-none d-md-inline-block" style="display: inline-block;">
                         </div>
-                        <div class="col-7 mx-4" style="display: inline-block;">
+                        <div class="col-12 mx-4 col-md-7" style="display: inline-block;">
                             <div class="row">
                                 {% for p in plans %}
-                                <div class="col-3" style="display: inline-block;">
+                                <div class="col-sm-6 col-12 col-md-3 my-2" style="display: inline-block;">
                                     <div class="h-100" style="background-color: #1f4d91;">
                                         <button class="btn h-100 w-100" name="monthly" value="{{p.Plan_Name}}" form="monthlyPlan" style="color: white;" type="submit">{{p.Plan_Name}}</button>
                                     </div>
@@ -61,7 +61,7 @@
                 
             
 
-            <div class="row border-bottom my-2">
+            <div class="row border-bottom my-2 d-md-flex d-none">
                 
                 <div class="col-4">
                     <div>
@@ -81,7 +81,7 @@
 
 
 
-            <div class="row border-bottom my-2">
+            <div class="row border-bottom my-2 d-md-flex d-none">
                 <div class="col-4">
                     <div>
                         <p>Video Quality</p>
@@ -99,7 +99,7 @@
 
 
 
-            <div class="row border-bottom my-2">
+            <div class="row border-bottom my-2 d-md-flex d-none">
                 <div class="col-4">
                     <div>
                         <p>Resolution</p>
@@ -117,7 +117,7 @@
 
 
 
-            <div class="row my-2">
+            <div class="row my-2 d-md-flex d-none">
                 <div class="col-4">
                     <div>
                         <p>Devices you can use to watch</p>
@@ -135,7 +135,7 @@
 
 
 
-            <div class="row my-2">
+            <div class="row my-2 d-md-flex d-none">
                 <div class="col-4">
                     <div>
                         <p></p>
@@ -156,7 +156,7 @@
             </div>
 
 
-            <div class="row my-2">
+            <div class="row my-2 d-md-flex d-none">
                 <div class="col-4">
                     <div>
                         <p></p>
@@ -177,7 +177,7 @@
             </div>
 
 
-            <div class="row my-2">
+            <div class="row my-2 d-md-flex d-none">
                 <div class="col-4">
                     <div>
                         <p></p>
