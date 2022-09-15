@@ -27,8 +27,21 @@
         }
     }
     </style>
+    <script>
+        function clicked(e)
+        {
+            if(!confirm('You are logging out?')) {
+                e.preventDefault();
+            }
+            else
+            return window.location.href="{% url 'account_logout' %}"
+        }
+    </script>
 </head>
 <body>
+    <div>
+        <button class="m-3 float-end btn btn-light" onclick="clicked(event)">Log Out</button><br>
+    </div>
     <div>
         <div class="my-5 py-4 rounded-5 px-5 card mx-auto bg-white">
             <h2 style="text-align: center;">Choose the right plan for you</h2>

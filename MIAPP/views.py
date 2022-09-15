@@ -1,5 +1,5 @@
 
-#from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views import View
 from .models import Subscriptions
@@ -12,6 +12,7 @@ class HOME(View):
         return render(request, 'index.html')
 
 
+@login_required(redirect_field_name='MI:HOME')
 def Subscribe(request):
     plans = Subscriptions.objects.all()
     for p in plans:
@@ -21,6 +22,7 @@ def Subscribe(request):
     return render(request, 'monthlyPlan.html', context)
 
 
+@login_required(redirect_field_name='MI:HOME')
 def SubscribeYearly(request):
     plans = Subscriptions.objects.all()
     for p in plans:
@@ -30,6 +32,7 @@ def SubscribeYearly(request):
     return render(request, 'yearlyPlan.html', context)
 
 
+@login_required(redirect_field_name='MI:HOME')
 def confirm(request):
     context = {}
     monthly = request.POST.get('monthly', None)
@@ -43,6 +46,7 @@ def confirm(request):
     return render(request, 'payment.html', context)
 
 
+@login_required(redirect_field_name='MI:HOME')
 def confirmYearly(request):
     context = {}
     yearly = request.POST.get('yearly', None)
